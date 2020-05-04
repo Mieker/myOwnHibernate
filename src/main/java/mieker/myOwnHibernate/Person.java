@@ -43,8 +43,8 @@ public class Person {
 		this.name = name;
 	}
 	
-	public String toString() {
-		return "ID: " + getId() + ", name: " + getName();
-	}
+//	public String toString() {
+//		return "ID: " + getId().toString() + ", name: " + getName();
+//	}
 
 }

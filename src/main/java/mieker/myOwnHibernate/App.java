@@ -36,9 +36,11 @@ public class App {
 
 		try {
 			session = sessionFactory.openSession();
+			
+			/*
 			// To save data into database.
 			tx = session.beginTransaction();
-
+			
 			// Creating Contact entity that will be save to the sqlite database
 			Person personA = new Person("Brian");
 
@@ -48,13 +50,15 @@ public class App {
 			// Committing the change in the database.
 			session.flush();
 			tx.commit();
-
+			*/
+			
 			// Fetching saved data
-			List<Person> personsList = session.createQuery("FROM Persons").list();
+			String hql = "from Person";
+			List<Person> personsList = session.createQuery(hql).list();
 
-			System.out.println("Persons in database: ");
+			System.out.println("Persons from database: ");
 			for (Person person : personsList) {
-				System.out.println(person);
+				System.out.println(person.getName());
 			}
 
 		} catch (Exception ex) {

@@ -8,12 +8,12 @@
 		<property name="format_sql">true</property>
 		<property name="dialect">mieker.myOwnHibernate.SQLiteDialect</property>
 		<property name="connection.driver_class">org.sqlite.JDBC</property>
-		<property name="connection.url">jdbc:sqlite:persons.db</property>
+		<property name="connection.url">jdbc:sqlite:src/main/java/mieker/myOwnHibernate/persons.db</property>
 		<property name="connection.username"></property>
 		<property name="connection.password"></property>
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<mapping class="mieker/myOwnHibernate/Person" />
+		<mapping class="mieker.myOwnHibernate.Person" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package com.srccodes.example.hibernate;
+package mieker.myOwnHibernate;
 
 import java.sql.Types;
 
