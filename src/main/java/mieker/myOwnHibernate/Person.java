@@ -17,6 +17,15 @@ public class Person {
 
 	@Column
 	private String name;
+	
+	public Person() {
+		
+	}
+	
+	public Person(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;
@@ -32,6 +41,10 @@ public class Person {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String toString() {
+		return "ID: " + getId() + ", name: " + getName();
 	}
 
 }
