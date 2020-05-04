@@ -42,7 +42,7 @@ public class App {
 			tx = session.beginTransaction();
 			
 			// Creating Contact entity that will be save to the sqlite database
-			Person personA = new Person("Brian");
+			Person personA = new Person("Jesica");
 
 			// Saving to the database
 			session.save(personA);
@@ -58,7 +58,7 @@ public class App {
 
 			System.out.println("Persons from database: ");
 			for (Person person : personsList) {
-				System.out.println(person.getName());
+				System.out.println(person);
 			}
 
 		} catch (Exception ex) {

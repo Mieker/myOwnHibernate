@@ -43,8 +43,9 @@ public class Person {
 		this.name = name;
 	}
 	
-//	public String toString() {
-//		return "ID: " + getId().toString() + ", name: " + getName();
-//	}
+	@Override
+	public String toString() {
+		return "ID: " + this.getId().toString() + ", name: " + this.getName();
+	}
 
 }
