@@ -15,5 +15,6 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<mapping class="mieker.myOwnHibernate.Person" />
+		<mapping class="mieker.myOwnHibernate.Pup" />
 	</session-factory>
 </hibernate-configuration>

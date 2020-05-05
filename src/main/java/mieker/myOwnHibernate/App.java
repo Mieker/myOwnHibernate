@@ -41,8 +41,20 @@ public class App {
 			// To save data into database.
 			tx = session.beginTransaction();
 			
-			// Creating Contact entity that will be save to the sqlite database
+			// Creating entity that will be save to the sqlite database
 			Person personA = new Person("Jesica");
+			
+			Pup pup1 = new Pup("Szarik");
+			List<Person> personList = session.createQuery("from Person").list();
+			for (Person person : personList) {
+				if (person.getName().equals("Alicja")) {
+					person.addPup(pup1);
+					Transaction transaction = session.beginTransaction();
+					session.save(pup1);
+					session.save(person);
+					transaction.commit();
+				}
+			}
 
 			// Saving to the database
 			session.save(personA);
@@ -53,13 +65,10 @@ public class App {
 			*/
 			
 			// Fetching saved data
-			String hql = "from Person";
-			List<Person> personsList = session.createQuery(hql).list();
-
-			System.out.println("Persons from database: ");
-			for (Person person : personsList) {
-				System.out.println(person);
-			}
+			
+			printPersons(session);
+			
+			// printPups(session);
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -73,4 +82,29 @@ public class App {
 			}
 		}
 	}
+
+	public static void printPups(Session session) {
+		String puphql = "from Pup";
+		List<Pup> pupList = session.createQuery(puphql).list();
+		
+		System.out.println("\nPups from database: ");
+		for (Pup pup : pupList) {
+			System.out.println(pup);
+		}
+	}
+
+	public static void printPersons(Session session) {
+		String hql = "from Person";
+		List<Person> personsList = session.createQuery(hql).list();
+
+		System.out.println("\nPersons from database: ");
+		for (Person person : personsList) {
+			System.out.println(person);
+			System.out.println("  pups:");
+			for (Pup pup : person.getPups()) {
+				System.out.println("    " + pup);
+			}
+		}
+	}
+		
 }

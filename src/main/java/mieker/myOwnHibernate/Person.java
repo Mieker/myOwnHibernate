@@ -1,15 +1,14 @@
 package mieker.myOwnHibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.*;
+
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "persons")
-public class Person {
+public class Person implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +17,10 @@ public class Person {
 	@Column
 	private String name;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "master_id")
+	private Set<Pup> pups;
+	
 	public Person() {
 		
 	}
@@ -25,6 +28,18 @@ public class Person {
 	public Person(String name) {
 		super();
 		this.name = name;
+	}
+		
+	public Set<Pup> getPups() {
+		return pups;
+	}
+
+	public void setPups(Set<Pup> pups) {
+		this.pups = pups;
+	}
+	
+	public void addPup(Pup newPup) {
+		pups.add(newPup);
 	}
 
 	public Integer getId() {
